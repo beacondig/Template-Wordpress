@@ -4,7 +4,7 @@ version: 2.1
 defaults: &defaults
   docker:
     - image: circleci/node:10.13.0
-  working_directory: ~/beacon
+  working_directory: ~/wpengine-ci-template
 # on install, you will need to run yarn install from the theme directory.  this will create the yarn.lock file
 jobs:
   build:
@@ -50,14 +50,14 @@ jobs:
             done
 
       - persist_to_workspace:
-          root: ~/beacon
+          root: ~/wpengine-ci-template
           paths: .
 
   deploy_production:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/beacon
+          at: ~/wpengine-ci-template
 
       - add_ssh_keys:
           fingerprints:
@@ -80,7 +80,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/beacon
+          at: ~/wpengine-ci-template
 
       - add_ssh_keys:
           fingerprints:
@@ -103,7 +103,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/beacon
+          at: ~/wpengine-ci-template
 
       - add_ssh_keys:
           fingerprints:

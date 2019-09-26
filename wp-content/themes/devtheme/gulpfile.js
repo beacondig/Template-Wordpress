@@ -15,7 +15,7 @@ gulp.task('watch', function() {
     // Watch .scss files
     gulp.watch('assets/scss/**/*.scss', ['styles']);
     // Watch .js files
-    gulp.watch(scripts, ['jshint']);
+    // gulp.watch(scripts, ['jshint']);
     gulp.watch(scripts, ['scripts']);
 });
 

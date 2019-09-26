@@ -6,17 +6,18 @@ var gulp = require('gulp');
 var livereload = require('gulp-livereload');
 var requireDir = require('require-dir')('./gulp-tasks');
 
-var scripts = ['assets/js/**/*.js', '!assets/js/plugins/**/*.js']
+var scripts = ['js/**/*.js', '!js/vendor/**/*.js']
 
 gulp.task('watch', function() {
     livereload.listen();
     // Watch .svg files
-    gulp.watch('assets/svg/font/*.svg', ['iconfont']);
+    // gulp.watch('assets/svg/font/*.svg', ['iconfont']);
     // Watch .scss files
-    gulp.watch('assets/scss/**/*.scss', ['styles']);
+    gulp.watch('css/scss/**/*.scss', ['styles']);
     // Watch .js files
     // gulp.watch(scripts, ['jshint']);
-    gulp.watch(scripts, ['scripts']);
+    // gulp.watch(scripts, ['scripts']);
 });
 
-gulp.task('default', ['iconfont', 'styles', 'jshint', 'scripts', 'sassdoc']);
+// gulp.task('default', ['iconfont', 'styles', 'jshint', 'scripts', 'sassdoc']);
+gulp.task('default', ['styles', 'sassdoc']);

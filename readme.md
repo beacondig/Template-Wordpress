@@ -7,9 +7,9 @@
 4.  Unzip the backup and 
 ## Gulp setup
 
-## [CircleCI](https://circleci.com/) setup
+## [Github Action](https://github.com/features/actions) setup
 
-All circleci settings will be housed in _./.circleci/config.yml_
+All Github Action settings will be housed in _./.circleci/config.yml_
 1.  For each of the wpengine site branches (production, staging and development), navigate to the Git push page and enter ssh information.  For more info on setting up a ssh key, see [here](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 2. Copy ssh key to clipboard
 3. within wpengine, navigate to the *Git push*; Enter Developer name, paste ssh key to the SSH public,  and click *Add Developer*.  This will generate a fingerprint.

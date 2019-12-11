@@ -22,20 +22,20 @@ var paths = {
 	input: 'src/',
 	output: 'dist/',
 	scripts: {
-		input: 'src/js/*',
+		input: 'theme-dir/js/*',
 		polyfills: '.polyfill.js',
 		output: 'dist/js/'
 	},
 	styles: {
-		input: 'src/sass/**/*.{scss,sass}',
+		input: 'theme-dir/scss/**/*.{scss,sass}',
 		output: 'dist/css/'
 	},
 	svgs: {
-		input: 'src/svg/*.svg',
+		input: 'theme-dir/svg/*.svg',
 		output: 'dist/svg/'
 	},
 	copy: {
-		input: 'src/copy/**/*',
+		input: 'theme-dir/copy/**/*',
 		output: 'dist/'
 	},
 	reload: './dist/'
@@ -115,7 +115,7 @@ var jsTasks = lazypipe()
 	.pipe(header, banner.main, {package: package})
 	.pipe(optimizejs)
 	.pipe(dest, paths.scripts.output)
-	.pipe(rename, {suffix: '.min'})
+	
 	.pipe(uglify)
 	.pipe(optimizejs)
 	.pipe(header, banner.main, {package: package})
@@ -200,7 +200,6 @@ var buildStyles = function (done) {
 		]))
 		.pipe(header(banner.main, {package: package}))
 		.pipe(dest(paths.styles.output))
-		.pipe(rename({suffix: '.min'}))
 		.pipe(postcss([
 			minify({
 				discardComments: {

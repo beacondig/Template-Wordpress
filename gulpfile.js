@@ -19,26 +19,26 @@ var settings = {
  */
 
 var paths = {
-	input: 'src/',
-	output: 'dist/',
+	input: 'buildFiles/',
+	output: 'theme-dir/',
 	scripts: {
-		input: 'theme-dir/js/*',
+		input: 'buildFiles/js/*',
 		polyfills: '.polyfill.js',
-		output: 'dist/js/'
+		output: 'theme-dir/js/'
 	},
 	styles: {
-		input: 'theme-dir/scss/**/*.{scss,sass}',
-		output: 'dist/css/'
+		input: 'buildFiles/sass/**/*.{scss,sass}',
+		output: 'theme-dir/css/'
 	},
 	svgs: {
-		input: 'theme-dir/svg/*.svg',
-		output: 'dist/svg/'
+		input: 'buildFiles/svg/*.svg',
+		output: 'theme-dir/svg/'
 	},
 	copy: {
-		input: 'theme-dir/copy/**/*',
-		output: 'dist/'
+		input: 'buildFiles/copy/**/*',
+		output: 'theme-dir/'
 	},
-	reload: './dist/'
+	reload: './theme-dir/'
 };
 
 
@@ -115,7 +115,7 @@ var jsTasks = lazypipe()
 	.pipe(header, banner.main, {package: package})
 	.pipe(optimizejs)
 	.pipe(dest, paths.scripts.output)
-	
+	// .pipe(rename, {suffix: '.min'})  if we want to rename, uncomment here
 	.pipe(uglify)
 	.pipe(optimizejs)
 	.pipe(header, banner.main, {package: package})
@@ -200,6 +200,7 @@ var buildStyles = function (done) {
 		]))
 		.pipe(header(banner.main, {package: package}))
 		.pipe(dest(paths.styles.output))
+		// .pipe(rename({suffix: '.min'})) if we want to rename, uncomment here
 		.pipe(postcss([
 			minify({
 				discardComments: {

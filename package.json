@@ -10,10 +10,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/beacondig/wordpress-template"
-	},
-	"bugs": {
-		"url": "https://github.com/beacondig/wordpress-template/issues"
+		"url": "http://link-to-your-git-repo.com"
 	},
 	"boilerplate": {
 		"version": "2.2.6",

@@ -4,13 +4,14 @@
  */
 
 var settings = {
-	clean: true,
+	clean: false,
 	scripts: true,
 	polyfills: true,
 	styles: true,
 	svgs: true,
 	copy: true,
-	reload: true
+	reload: true,
+	php: true
 };
 
 
@@ -38,7 +39,10 @@ var paths = {
 		input: 'buildFiles/copy/**/*',
 		output: 'theme-dir/'
 	},
-	reload: './theme-dir/'
+	reload: './theme-dir/',
+	php: {
+		input: './theme-dir/**/*.php'
+	},
 };
 
 
@@ -88,6 +92,9 @@ var svgmin = require('gulp-svgmin');
 
 // BrowserSync
 var browserSync = require('browser-sync');
+
+// PHP
+var phpcs = require('gulp-phpcs');
 
 
 /**
@@ -180,6 +187,22 @@ var lintScripts = function (done) {
 
 };
 
+// Check PHP to confirm valid
+var checkPHP = function (done) {
+
+	// Make sure this feature is activated before running
+	if (!settings.php) return done();
+
+	return src(paths.php.input)	
+        // Validate files using PHP Code Sniffer
+        .pipe(phpcs({
+            bin: 'src/vendor/bin/phpcs',
+            standard: 'PSR2',
+            warningSeverity: 0
+        }))
+        // Log all problems that was found
+        .pipe(phpcs.reporter('log'));
+};
 // Process, lint, and minify Sass files
 var buildStyles = function (done) {
 
@@ -292,4 +315,15 @@ exports.watch = series(
 	exports.default,
 	startServer,
 	watchSource
+);
+exports.build = series(
+	cleanDist,
+	parallel(
+		buildScripts,
+		lintScripts,
+		buildStyles,
+		buildSVGs,
+		copyFiles		
+	),
+	checkPHP
 );

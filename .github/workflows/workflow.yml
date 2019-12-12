@@ -25,7 +25,12 @@ jobs:
         gulp build
       env:
         CI: true   
-    - name: rsync deployments
-      uses: contention/rsync-deployments@v1.0.0        
-    
-    
+    - name: GitHub Action for WP Engine Git Deployment
+      uses: jovrtn/github-action-wpengine-git-deploy@0.1.2 
+        env = {
+          WPENGINE_ENVIRONMENT_NAME   = "my-cool-site-production"
+        }
+        secrets = [
+          {{publicKey}},
+          {{privateKey}}
+        ]

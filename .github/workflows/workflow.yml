@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+        resolves = ["Git Push to Production"]
 jobs:
   build:
 
@@ -15,18 +16,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12.x
     - name: setup files
       run: |
         npm install
         gulp build
-      env:
-        CI: true   
-    - name: GitHub Action for WP Engine Git Deployment
-      uses: jovrtn/github-action-wpengine-git-deploy@0.1.2 
+    - name: Deploy
+      uses: jovrtn/github-action-wpengine-git-deploy@0.1.2   
         env = {
           WPENGINE_ENVIRONMENT_NAME   = "beacondig"
         }
@@ -34,3 +33,5 @@ jobs:
           {{publicKey}},
           {{privateKey}}
         ]
+      env:
+        CI: true           

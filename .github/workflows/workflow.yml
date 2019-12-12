@@ -1,11 +1,9 @@
-name: wp-deploy
+name: Node CI
 
-on: 
-  push:
-    branches:
-      - master
+on: [push]
+
 jobs:
-  deploy:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -19,10 +17,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: setup files
+    - name: npm install, build, and test
       run: |
-        npm install
-        npm build
+        npm ci
+        npm run build --if-present
+        npm test
       env:
         CI: true
-        

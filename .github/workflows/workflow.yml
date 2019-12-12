@@ -22,13 +22,7 @@ jobs:
         npm install
         gulp build
     - name: Deploy
-      uses: jovrtn/github-action-wpengine-git-deploy@0.1.2   
-        env = {
-          WPENGINE_ENVIRONMENT_NAME   = "beacondig"
-        }
-        secrets = [
-          {{publicKey}},
-          {{privateKey}}
-        ]
+      uses: "jovrtn/github-action-wpengine-git-deploy@0.1.2"
+        
       env:
         CI: true           

@@ -325,5 +325,5 @@ exports.build = series(
 		buildSVGs,
 		copyFiles		
 	),
-	checkPHP
+	// checkPHP
 );

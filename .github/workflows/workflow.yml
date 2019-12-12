@@ -25,7 +25,8 @@ jobs:
         gulp build
       env:
         CI: true     
-    
+  deploy:
+    needs: build
     - uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
     - name: GitHub Action for WP Engine Git Deployment
     

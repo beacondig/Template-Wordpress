@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-        resolves = ["Git Push to Production"]
 jobs:
   build:
 

@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -24,5 +24,37 @@ jobs:
         npm install
         gulp build
       env:
-        CI: true
-        
+        CI: true       
+    - name: WPEngine Deploy
+    - uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
+        env = {
+          WPENGINE_ENVIRONMENT_NAME   = "beacondig"
+        }
+        secrets = [
+          "MIIEpQIBAAKCAQEAwX0TzsQbyUHixvazH7cGaI1LmNx3hMDTBwjbigOsOUcin2nt
+          m6e1UNBAT5B94jISS5e3bU355V56Agbkxkn41oi+N/rJIekH+l3lkjh224jR/IoV
+          c02nkQouHI9890wNsf1MlGR0tJjenqAkG+JnUcwd7sj1H77fCCXu/+qiWIDyPF8U
+          6CjxDK1dzef5glJf14m6mYrnDbJNkbCj50DuI1lAzCRPtXyl6fcyPGjV6pBrUHuL
+          Py8w6TuauIo4qH6Ouirk8DDLU+T1JY6y3k8xN+NLeMFMLFy7dsCf4WPEWgnxPw9i
+          wKGgu+exF8ygoEBuspW3VJrD1SW8aejX5J71BwIDAQABAoIBAQC8xtC9ih5mBI9C
+          ec2X4tUwyrJ4KJm/fvYlReIUTLMKiznfeNUnacAAYb5tIld/ikTJVfPThCGNRNkb
+          AyjPwbozbeTQ7zCvkhGDl3r1Z3ung10E3KBDB/+2Bc2pdeGB0cUG5FCD82LeFMwW
+          zb2NKx6M8u49W/m0iGBILeJ5862DVE+OFfi0WNHF5BnwEA83Xr5B2COLerhOQzg4
+          A8V24NhZM1DYH24xY7cI3EvIm6OZPGFJWqz/0phCN8bnzF9q8p54wl7Ga/19WeAN
+          87QGhhrHruzv7j8fs2p77gOCx0W8QoFE4DrzCodPiqGgy3sEKSxVP/Vnp2qgcsxM
+          PbwA+u8JAoGBAPLxuigZfF5gVL4DgTr/9iSXkkIxqaX+mLAVfSvTWEvhCWVaZh8h
+          rXAvrc5cDcLCxhIk+r2sSH4wNk58tui2hJdESbZWrhPKuNgbFv0YVLK4sqpDyyCY
+          qodppzEHj+jYWOeLBVS9GuIrtflJCJNxv/ux+G9JAqBaKPnv7HTxf6eFAoGBAMvi
+          +HZ/Og4NWBemAf+JExsDiIvoxxU28lph4oQ581fBEO5XCIBBa/0b845ysWbOF4Ff
+          PzqqFpHnvVfMTTASD9ZN7GTsLP6IK4DVZUoGbexe+CzZIt8H1DnX1xspnjS3/h5s
+          w3lwkacta1zKQdorBZP2jUvLVvs9Z6Wwl5OcmEIbAoGAcVRqLsKUzcHKRkmEQ22b
+          +T3rsI1SQmkd+SZNGeChU+RKacld0i/3pFnZjmZK1QvfMh+mCE0SFCuRadOrz6s0
+          9wuYB0MwOXNb/xPECZUMDcMzNVIis7YD9t9GawzICSrDbl/fwMPmgpM5dGypX360
+          vEktR1ybqQnmC5HskDEIB7ECgYEAyTFFW7F6eWljl5qCeEYsq0iWUvG2mtGo39Wd
+          8Ds7TUpASeFqix2D0bXmZpf5RWhzu39g5qP3N62Fo4EAXkJEjIZCkuiYEegPfceW
+          dzDXAhxJLABtL8cK/rVmF/C+pGk4A4/yaQDTSjRAsMUJrJ8tlvACSFv0jmHuyIr1
+          WH17picCgYEAwzmoV7UPfLTXTFtKWogG+hJN6IrSVwrUoLZLJIxsvAqJbuxqm9Is
+          pB2H7ILOfayjJWvDgUA3/ux5AYOwnhWeXVLB3E3gCU6HNSWi+iM3JYLWfRbr5et0
+          8gtZXzBhCFnNGME7XIXI2fWyjx/MV4zPEVvn6VN9rgQFdsY/BySL3zc=",
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBfRPOxBvJQeLG9rMftwZojUuY3HeEwNMHCNuKA6w5RyKfae2bp7VQ0EBPkH3iMhJLl7dtTfnlXnoCBuTGSfjWiL43+skh6Qf6XeWSOHbbiNH8ihVzTaeRCi4cj3z3TA2x/UyUZHS0mN6eoCQb4mdRzB3uyPUfvt8IJe7/6qJYgPI8XxToKPEMrV3N5/mCUl/XibqZiucNsk2RsKPnQO4jWUDMJE+1fKXp9zI8aNXqkGtQe4s/LzDpO5q4ijiofo66KuTwMMtT5PUljrLeTzE340t4wUwsXLt2wJ/hY8RaCfE/D2LAoaC757EXzKCgQG6ylbdUmsPVJbxp6NfknvUH"
+        ]

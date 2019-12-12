@@ -20,9 +20,13 @@ jobs:
     - name: setup files
       run: |
         npm install
-        gulp build
+        gulp build  
     - name: Deploy
       uses: "jovrtn/github-action-wpengine-git-deploy@0.1.2"
-        
-      env:
-        CI: true           
+      env: 
+        WPENGINE_ENVIRONMENT_NAME: ""
+        secrets: [
+          "{{publicKey}}",
+          "{{privateKey}}"
+        ]
+        CI: true

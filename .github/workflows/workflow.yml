@@ -21,7 +21,7 @@ jobs:
           # Hostname or IP address of the server.
           host: beacondevelop.ssh.wpengine.net
           # Username for authentication.
-          username: beacondevelop-git
+          username: beacondevelop
           # Port number of the server.
           # port: # optional, default is 22
           # File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)

@@ -20,14 +20,14 @@ jobs:
           # Hostname or IP address of the server.
           host: beacondevelop@beacondevelop.ssh.wpengine.net
           # Username for authentication.
-          username:
+          # username:
           # Port number of the server.
-          port: # optional, default is 22
+          # port: # optional, default is 22
           # File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
           # Password for password-based user authentication. 
-          password: # optional
+          # password: # optional
           # For an encrypted private key, this is the passphrase used to decrypt it.
-          passphrase: # optional
+          # passphrase: # optional
           # Try keyboard-interactive user authentication if primary user authentication method fails.
-          tryKeyboard: # optional
+          # tryKeyboard: # optional

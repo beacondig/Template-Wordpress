@@ -1,19 +1,43 @@
-name: wp-deploy
-on:
-  push:
-    branches:
-      - feature-deploy-action
+name: Node CI
+
+on: [push]
+
 jobs:
   build:
-    name: Deployment
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
-      - uses: actions/checkout@v1
-      - name: "Setup SSH Keys and known_hosts"
-      - uses: webfactory/ssh-agent@v0.1.1
-        with:
-          ssh-private-key: "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: "Some task that fetches dependencies"
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: "./fetch-deps.sh\ngit\n"
+    - uses: actions/checkout@v1
+    name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: webfactory/ssh-agent
+      uses: webfactory/ssh-agent@v0.1.1
+      with: 
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: git test
+      run: |
+        ssh git@git.wpengine.com info
+      env:
+        CI: true

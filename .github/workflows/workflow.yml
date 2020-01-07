@@ -1,31 +1,47 @@
 name: wp-deploy
 
-on: 
+on:
   push:
     branches:
-      - master
+      - feature-deploy-action
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+#     env:
+#       WPENGINE_ENVIRONMENT_NAME: beacondig
+#       secrets.WPENGINE_SSH_KEY_PUBLIC: ${{publicKey}}
+#       secrets.WPENGINE_SSH_KEY_PRIVATE: ${{privateKey}}
+
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Use Node.js
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: 12.x
+#     - name: setup files
+#       run: |
+#         npm install
+#         gulp build
+#       CI: true
+#     - name: Deploy
+#       uses: "jovrtn/github-action-wpengine-git-deploy@0.1.2"
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    env: 
-      WPENGINE_ENVIRONMENT_NAME: beacondig
-      secrets.WPENGINE_SSH_KEY_PUBLIC: ${{publicKey}}
-      secrets.WPENGINE_SSH_KEY_PRIVATE: ${{privateKey}}
-
+    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: setup files
-      run: |
-        npm install
-        gulp build  
-      CI: true
-    - name: Deploy
-      uses: "jovrtn/github-action-wpengine-git-deploy@0.1.2"
-      
-
-
+      - uses: actions/checkout@v1
+      - name: Setup SSH Keys and known_hosts
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< " $ "
+      - name: Some task that fetches dependencies
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ./fetch-deps.sh
+          git ls-remote

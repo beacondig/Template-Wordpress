@@ -17,7 +17,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "dist/"
+          SOURCE: "theme-dir"
           REMOTE_HOST: beacondevelop.sftp.wpengine.com
           REMOTE_USER: beacondevelop-gulp
           TARGET: /wp-content/themes

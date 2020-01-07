@@ -3,10 +3,16 @@ on:
   push:
     branches:
       - feature-deploy-action
-jobs:
-  my_job:
-    steps:
-      - actions/checkout@v1
-      - uses: webfactory/ssh-agent@v0.1.1
-        with:
-          ssh-private-key: "${{ secrets.SSH_PRIVATE_KEY }}"
+  jobs:
+    build:
+      runs-on: ubuntu-18.04
+      steps:
+        - uses: actions/checkout@v1
+        - name: "Setup SSH Keys and known_hosts"
+        - uses: webfactory/ssh-agent@v0.1.1
+          with:
+            ssh-private-key: "${{ secrets.SSH_PRIVATE_KEY }}"
+        - name: "Some task that fetches dependencies"
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: "./fetch-deps.sh\ngit\n"

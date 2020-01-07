@@ -27,17 +27,12 @@ on:
 #     - name: Deploy
 #       uses: "jovrtn/github-action-wpengine-git-deploy@0.1.2"
 jobs:
-  build:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
-        - name: Setup SSH Keys and known_hosts
-        - uses: webfactory/ssh-agent@v0.1.1
-          with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Some task that fetches dependencies
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ./fetch-deps.sh
-          git
+    my_job:
+        ...
+        steps:
+            - actions/checkout@v1
+            # Make sure the @v0.1.1 matches the current version of the
+            # action 
+            - uses: webfactory/ssh-agent@v0.1.1
+              with:
+                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}

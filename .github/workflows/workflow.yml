@@ -25,7 +25,7 @@ jobs:
           port: # optional, default is 22
           # File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-          # Password for password-based user authentication.
+          # Password for password-based user authentication. 
           password: # optional
           # For an encrypted private key, this is the passphrase used to decrypt it.
           passphrase: # optional

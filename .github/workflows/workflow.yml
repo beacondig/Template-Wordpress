@@ -1,6 +1,7 @@
 name: Node C
 
-on: [push]
+  on = "push"
+  resolves = ["Git Push to Production"]
 
 jobs:
   build:
@@ -13,15 +14,6 @@ jobs:
       #   with:
       #     node-version: "12.x"
 
-      - name: GitHub Action for WP Engine Git Deployment
-        uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
-        with: env = {
-          WPENGINE_ENVIRONMENT_NAME   = "beacondevelop"
-          }
-          secrets = [
-          "SSH_PRIVATE_KEY",
-          "SSH_PUBLIC_KEY"
-          ]
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v1
         with:
@@ -55,3 +47,14 @@ jobs:
         #   # tryKeyboard: # optional
 
       # - name: Run SSH command
+
+action "Git Push to Production" {
+  uses = "jovrtn/github-action-wpengine-git-deploy@master"
+  env = {
+    WPENGINE_ENVIRONMENT_NAME   = "my-cool-site-production"
+  }
+  secrets = [
+    "WPENGINE_SSH_KEY_PRIVATE",
+    "WPENGINE_SSH_KEY_PUBLIC"
+  ]
+}

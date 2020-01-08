@@ -24,7 +24,7 @@ jobs:
         run: |
           cd /home/runner/.ssh
           ls -a
-          ssh git@git.wpengine.com info
+          ssh dennis@192.241.139.21
         # uses: garygrossgarten/github-action-ssh@v0.3.0
         # with:
         #   # Command to execute on the remote server.

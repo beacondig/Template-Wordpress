@@ -17,7 +17,7 @@ jobs:
       #     node-version: "12.x"
       - uses: webfactory/ssh-agent@v0.1.1
         with:
-          ssh-private-key: ${{ secret.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v1
       #   with:

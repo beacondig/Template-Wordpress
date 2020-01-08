@@ -1,4 +1,4 @@
-name: Node C
+name: CI
 
 on: [push]
 
@@ -8,41 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: "12.x"
-
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v1
-        with:
-          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          public-key: ${{ secrets.SSH_PUBLIC_KEY }}
-          name: wpengine_rsa # optional
-          # known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
-      # config: ${{ secrets.CONFIG }} # ssh_config; optional
-      - name: git test
-        run: |
-          cd /home/runner/.ssh
-          ls -a
-          ssh -tt git@git.wpengine.com info
-        # uses: garygrossgarten/github-action-ssh@v0.3.0
-        # with:
-        #   # Command to execute on the remote server.
-        #   command: echo hello
-        #   # Hostname or IP address of the server.
-        #   host: beacondevelop.ssh.wpengine.net
-        #   # Username for authentication.
-        #   username: beacondevelop
-        #   # Port number of the server.
-        #   # port: # optional, default is 22
-        #   # File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)
-        #   privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-        #   # Password for password-based user authentication.
-        #   # password: # optional
-        #   # For an encrypted private key, this is the passphrase used to decrypt it.
-        #   # passphrase: # optional
-        #   # Try keyboard-interactive user authentication if primary user authentication method fails.
-        #   # tryKeyboard: # optional
-
-      # - name: Run SSH command
+      - name: GitHub Action for WP Engine Git Deployment
+        uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
+        env:
+          WPENGINE_ENVIRONMENT_NAME: "my-cool-site-production"
+          secrets: ${{secret}}
+            ${{secret}}

@@ -16,7 +16,7 @@ jobs:
         uses: shimataro/ssh-key-action@v1
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # public-key: ${{ secrets.SSH_KEY_PUBLIC }}
+          public-key: ${{ secrets.SSH_PUBLIC_KEY }}
           # name: id_rsa # optional
           # known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
           # config: ${{ secrets.CONFIG }} # ssh_config; optional

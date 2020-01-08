@@ -20,7 +20,7 @@ jobs:
           name: wpengine # optional
           known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
-      - name: git
+      - name: git test
         run: |
           ssh git@git.wpengine.com info
         # uses: garygrossgarten/github-action-ssh@v0.3.0

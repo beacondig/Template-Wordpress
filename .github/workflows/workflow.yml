@@ -26,6 +26,7 @@ jobs:
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git test
         run: |
+          git remote add wpengine 
           git branch -a
           cd /home/runner/.ssh
           ls -a

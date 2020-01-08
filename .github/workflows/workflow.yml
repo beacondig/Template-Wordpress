@@ -30,7 +30,7 @@ jobs:
         run: |
           cd /home/runner/.ssh
           ls -a
-          ssh -tt beacondevelop@beacondevelop.ssh.wpengine.net
+          ssh git@git.wpengine.com info
           git remote add wpengine git@git.wpengine.com:production/beacondevelop.git
           git checkout master
           git push wpengine master

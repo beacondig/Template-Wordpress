@@ -26,14 +26,9 @@ jobs:
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git test
         run: |
+          git branch -a
           cd /home/runner/.ssh
           ls -a
-      - name: wpengine deploy
-        uses: "jovrtn/github-action-wpengine-git-deploy@master"
-        env:
-          WPENGINE_ENVIRONMENT_NAME: "beacondevelop"
-          WPENGINE_SSH_KEY_PRIVATE: ${{ secrets.SSH_PRIVATE_KEY }}
-          WPENGINE_SSH_KEY_PUBLIC: ${{ secrets.SSH_PUBLIC_KEY }}
         # uses: garygrossgarten/github-action-ssh@v0.3.0
         # with:
         #   # Command to execute on the remote server.

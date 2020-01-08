@@ -11,6 +11,6 @@ jobs:
       - name: GitHub Action for WP Engine Git Deployment
         uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
         env:
-          WPENGINE_ENVIRONMENT_NAME: "my-cool-site-production"
+          WPENGINE_ENVIRONMENT_NAME: "beacondevelop"
           WPENGINE_SSH_KEY_PRIVATE: ${{secrets.SSH_PRIVATE_KEY}}
           WPENGINE_SSH_KEY_PUBLIC: ${{secrets.SSH_PUBLIC_KEY}}

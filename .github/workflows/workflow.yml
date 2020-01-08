@@ -27,7 +27,7 @@ jobs:
         uses: garygrossgarten/github-action-ssh@v0.3.0
         with:
           # Command to execute on the remote server.
-          command: |
+          command: echo hello
           # Hostname or IP address of the server.
           host: beacondevelop.ssh.wpengine.net
           # Username for authentication.

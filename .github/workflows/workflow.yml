@@ -15,10 +15,10 @@ jobs:
       #   uses: actions/setup-node@v1
       #   with:
       #     node-version: "12.x"
-      - name: webfac   
+      - name: webfac
         uses: webfactory/ssh-agent@v0.1.1
-              with:
-                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v1
       #   with:

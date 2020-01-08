@@ -1,5 +1,6 @@
 # ignore all files starting with .
 \.*
+!.github/workflows/*
 # include .gitignore (i.e. do NOT ignore)
 !.gitignore
 # include .editorconfig (i.e. do NOT ignore)

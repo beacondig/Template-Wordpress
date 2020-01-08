@@ -1,9 +1,9 @@
-name: Node C
+name: Deploy
 
 on:
   push:
     branches:
-      - feature-deploy-action
+      - wpengine
 
 jobs:
   build:

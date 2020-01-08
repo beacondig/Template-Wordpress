@@ -18,6 +18,7 @@ jobs:
           # Command to execute on the remote server.
           command: |
             git add remote origin git@git.wpengine.com:production/beacondevelop.git
+            git push -u origin master
 
           # Hostname or IP address of the server.
           host: beacondevelop.ssh.wpengine.net

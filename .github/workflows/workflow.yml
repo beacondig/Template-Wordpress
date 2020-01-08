@@ -1,7 +1,6 @@
 name: Node C
 
-  on = "push"
-  resolves = ["Git Push to Production"]
+on: [push]
 
 jobs:
   build:
@@ -47,14 +46,3 @@ jobs:
         #   # tryKeyboard: # optional
 
       # - name: Run SSH command
-
-action "Git Push to Production" {
-  uses = "jovrtn/github-action-wpengine-git-deploy@master"
-  env = {
-    WPENGINE_ENVIRONMENT_NAME   = "my-cool-site-production"
-  }
-  secrets = [
-    "WPENGINE_SSH_KEY_PRIVATE",
-    "WPENGINE_SSH_KEY_PUBLIC"
-  ]
-}

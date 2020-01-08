@@ -12,13 +12,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+      - name: git
+        run: |
+          git remote add staging git@git.wpengine.com:production/beacondevelop.git
       - name: Run SSH command
         uses: garygrossgarten/github-action-ssh@v0.3.0
         with:
           # Command to execute on the remote server.
           command: |
-            git remote add staging git@git.wpengine.com:production/beacondevelop.git
-            git push -u origin master
 
           # Hostname or IP address of the server.
           host: beacondevelop.ssh.wpengine.net

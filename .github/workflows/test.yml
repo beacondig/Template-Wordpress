@@ -16,3 +16,6 @@ jobs:
           USER: beacondevelop
         with:
           args: echo hello?
+      - name: push git
+        run: |
+          ssh -tt git@git.wpengine.com info

@@ -15,4 +15,4 @@ jobs:
           HOST: beacondevelop.ssh.wpengine.net
           USER: beacondevelop-git
         with:
-          args: echo hello
+          args: echo hello?

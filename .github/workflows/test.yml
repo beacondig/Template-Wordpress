@@ -15,7 +15,6 @@ jobs:
           HOST: beacondevelop.ssh.wpengine.net
           USER: beacondevelop
         with:
-          args: echo hello?
-      - name: push git
-        run: |
-          ssh -tt git@git.wpengine.com info
+          args: |
+            git status
+            git --help

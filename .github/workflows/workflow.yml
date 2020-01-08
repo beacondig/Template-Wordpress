@@ -15,8 +15,7 @@ jobs:
       #   uses: actions/setup-node@v1
       #   with:
       #     node-version: "12.x"
-      - name: webfac
-        uses: webfactory/ssh-agent@v0.1.1
+      - uses: webfactory/ssh-agent@v0.1.1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       # - name: Install SSH key

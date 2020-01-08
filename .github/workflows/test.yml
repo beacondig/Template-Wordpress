@@ -13,6 +13,6 @@ jobs:
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           HOST: beacondevelop.ssh.wpengine.net
-          USER: beacondevelop-git
+          USER: beacondevelop
         with:
           args: echo hello?

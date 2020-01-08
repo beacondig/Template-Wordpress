@@ -17,7 +17,6 @@ jobs:
         with:
           # Command to execute on the remote server.
           command: |
-            ls -a && cd sites && ls -a
             git add remote origin git@git.wpengine.com:production/beacondevelop.git
 
           # Hostname or IP address of the server.

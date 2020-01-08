@@ -12,6 +12,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v1
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # public-key: ${{ secrets.SSH_KEY_PUBLIC }}
+          # name: id_rsa # optional
+          # known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
+          # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git
         run: |
           git remote add staging git@git.wpengine.com:production/beacondevelop.git

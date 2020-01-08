@@ -1,6 +1,9 @@
 name: Node C
 
-on: [push]
+on:
+  push:
+    branches:
+      - feature-deploy-action
 
 jobs:
   build:

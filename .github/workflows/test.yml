@@ -8,14 +8,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: GitHub Action for WP Engine Git Deployment
-        uses: jovrtn/github-action-wpengine-git-deploy@0.1.2
-        action "Run deploy script" {
-          uses = "maddox/actions/ssh@master"
-          args = "/opt/deploy/run"
-          secrets = [
-            "PRIVATE_KEY",
-            "HOST",
-            "USER"
-          ]
-        }
+      - name: Update Server Repo
+        uses: maddox/actions/ssh@master
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: beacondevelop.ssh.wpengine.net
+          USER: beacondevelop-git
+        with:
+          args: echo hello

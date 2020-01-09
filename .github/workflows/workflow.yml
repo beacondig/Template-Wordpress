@@ -15,16 +15,16 @@ jobs:
       #   uses: actions/setup-node@v1
       #   with:
       #     node-version: "12.x"
-      - uses: webfactory/ssh-agent@v0.1.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      # - name: Install SSH key
-      #   uses: shimataro/ssh-key-action@v1
+      # - uses: webfactory/ssh-agent@v0.1.1
       #   with:
-      #     private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     public-key: ${{ secrets.SSH_PUBLIC_KEY }}
-      #     name: wpengine_rsa # optional
-      #     known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v1
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          public-key: ${{ secrets.SSH_PUBLIC_KEY }}
+          name: wpengine_rsa # optional
+          known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git test
         run: ssh git@git.wpengine.com info

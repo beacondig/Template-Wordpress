@@ -1,4 +1,4 @@
-name: Deploy??
+name: Deploy!
 
 on:
   push:
@@ -23,8 +23,8 @@ jobs:
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           public-key: ${{ secrets.SSH_PUBLIC_KEY }}
-          name: wpengine_rsa # optional
-          known-hosts: ${{ secrets.KNOWN_HOSTS }} # known_hosts; optional
+          name: wpengine_rsa
+          known-hosts: ${{ secrets.KNOWN_HOSTS }}
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git test
         run: ssh git@git.wpengine.com info

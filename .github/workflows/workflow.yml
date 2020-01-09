@@ -23,12 +23,12 @@ jobs:
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           public-key: ${{ secrets.SSH_PUBLIC_KEY }}
-          name: wpengine_rsa
+          # name: wpengine_rsa
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
       # config: ${{ secrets.CONFIG }} # ssh_config; optional
       - name: git test
         run: |
-          ssh -i ~/.ssh/wpengine_rsa git@git.wpengine.com info
+          ssh git@git.wpengine.com info
           git checkout master
           git remote add development git@git.wpengine.com:production/beacondevelop.git
           git remote -v
